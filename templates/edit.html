@@ -2,7 +2,7 @@
 {% block title %}Edit Task input{% endblock title %}
 {% block body %}
       <div >
-        <h1><span class="title">Edit </span>Details</h1>
+        <h1><span class="title">Edit </span>scheduler Details</h1>
         <form action="" method="post">
             {% csrf_token %}
             <div class="row">
@@ -31,9 +31,9 @@
               </div>
               <div class="col-4 mx-auto text-center">
               {% if user.is_authenticated %}
-            <button type="submit" class="btn add">Update</button>
+            <button type="submit" class="btn add text-dark"><b>Update</b></button>
             {% else %}
-            <button type="submit" class="btn add disabled">Update</button> Please Login to Add Task...
+            <button type="submit" class="btn add disabled text-dark"><b>Update</b></button> Please Login to Add Task...
             {%endif%}
             </div>
           </form>

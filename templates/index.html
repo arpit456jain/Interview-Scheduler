@@ -30,12 +30,12 @@
                 <input type="email" class="form-control input" id="" aria-describedby="emailHelp" name="intervieweeEmail" placeholder="interviewee Email">
               </div>
             </div>
-
+            
            <div class="col-4 mx-auto text-center">
             {% if user.is_authenticated %}
-            <button type="submit" class="btn add"><i class="fas fa-plus"></i>Add</button>
+            <button type="submit" class="btn add text-dark"><b>schedule</b></button>
             {% else %}
-            <button type="submit" class="btn disabled add"><i class="fas fa-plus"></i>Add</button> Please Login to Add Task...
+            <button type="submit" class="btn disabled add text-dark"><b>schedule</b></button> <span style="color:#fff">Please Login to schedule a Interview...</span>...</span>
             {%endif%}
            </div>
           </div>
