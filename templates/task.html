@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}All Tasks{% endblock title %}
+{% block task %}active{% endblock task %}
+{% block body %}
+<style>
+  th
+  {
+    color: black !important;
+  }
+</style>
+      <div class="container col-lg-8 my-5">
+      <table class="table" id="myTable">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Interviewer Name</th>
+                <th scope="col">Interviewer Email</th>
+                <th scope="col">Interviewee Name</th>
+                <th scope="col">Interviewee Email</th>
+                <th scope="col">edit/done</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+                {% for task in allschedule  %}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{task.interviewerName}}</td>
+                <td>{{task.interviewerEmail}}</td>
+                <td>{{task.intervieweeName}}</td>
+                <td>{{task.intervieweeEmail}}</td>
+                <td> <a href="/edittask/{{task.id}}" class="btn btn-success">Edit</a>
+                     <a href="/deletetask/{{task.id}}" class="btn btn-danger">Done</a>
+                 </td>
+     
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+      </div>
+
+ 
+{% endblock body %}

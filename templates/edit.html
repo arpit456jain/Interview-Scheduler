@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Edit Task input{% endblock title %}
+{% block body %}
+      <div >
+        <h1><span class="title">Edit </span>Details</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="row">
+              <div class="container col-lg-5 col-11 my-5">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="" class="form-label">Interviewer Name</label>
+                  <input type="text" class="form-control input" id="" aria-describedby="emailHelp" name="interviewerName" value="{{interviewerName}}" placeholder="interviewer Name">
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Interviewer Email</label>
+                  <input type="email" class="form-control input" id="" aria-describedby="emailHelp" name="interviewerEmail" value="{{interviewerEmail}}" placeholder="interviewer Email">
+                </div>
+              </div>
+              <div class="container col-lg-5 col-11 my-5">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                  <label for="" class="form-label">Interviewee Name</label>
+                  <input type="text" class="form-control input" id="" aria-describedby="emailHelp" name="intervieweeName" value="{{intervieweeName}}" placeholder="interviewee Name">
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Interviewee Email</label>
+                  <input type="email" class="form-control input" id="" aria-describedby="emailHelp" name="intervieweeEmail" value="{{intervieweeEmail}}" placeholder="interviewinterviewee Email">
+                </div>
+              </div>
+              <div class="col-4 mx-auto text-center">
+              {% if user.is_authenticated %}
+            <button type="submit" class="btn add">Update</button>
+            {% else %}
+            <button type="submit" class="btn add disabled">Update</button> Please Login to Add Task...
+            {%endif%}
+            </div>
+          </form>
+      </div>
+
+{% endblock body %}
