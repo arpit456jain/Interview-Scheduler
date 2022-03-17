@@ -11,9 +11,11 @@ def home(request):
         interviewerEmail = request.POST['interviewerEmail']
         intervieweeName = request.POST['intervieweeName']
         intervieweeEmail = request.POST['intervieweeEmail']
+        intervieweStartTime = request.POST['intervieweStartTime']
+        intervieweEndTime = request.POST['intervieweEndTime']
         
-        print(interviewerName,interviewerEmail,intervieweeName,intervieweeEmail)
-        entry = schedule(interviewerName=interviewerName,interviewerEmail=interviewerEmail,intervieweeName=intervieweeName,intervieweeEmail=intervieweeEmail,user=request.user)
+        print(interviewerName,interviewerEmail,intervieweeName,intervieweeEmail,intervieweStartTime,intervieweEndTime)
+        entry = schedule(interviewerName=interviewerName,interviewerEmail=interviewerEmail,intervieweeName=intervieweeName,intervieweeEmail=intervieweeEmail,user=request.user,intervieweStartTime=intervieweStartTime,intervieweEndTime=intervieweEndTime)
         entry.save()
         print("true")
     return render(request,'index.html')
@@ -86,15 +88,19 @@ def edittask(request,slug):
         interviewerEmail = request.POST['interviewerEmail']
         intervieweeName = request.POST['intervieweeName']
         intervieweeEmail = request.POST['intervieweeEmail']
+        intervieweStartTime = request.POST['intervieweStartTime']
+        intervieweEndTime = request.POST['intervieweEndTime']
         
         print(interviewerName,interviewerEmail,intervieweeName,intervieweeEmail)
         task.interviewerName = interviewerName
         task.interviewerEmail = interviewerEmail
         task.intervieweeName = intervieweeName
         task.intervieweeEmail = intervieweeEmail
+        task.intervieweStartTime = intervieweStartTime
+        task.intervieweEndTime = intervieweEndTime
         task.save()
         return redirect('/task/') 
-    context = {"interviewerName":task.interviewerName,"interviewerEmail":task.interviewerEmail,"intervieweeName":task.intervieweeName,"intervieweeEmail":task.intervieweeEmail}
+    context = {"interviewerName":task.interviewerName,"interviewerEmail":task.interviewerEmail,"intervieweeName":task.intervieweeName,"intervieweeEmail":task.intervieweeEmail,"intervieweStartTime":task.intervieweStartTime,"intervieweEndTime":task.intervieweEndTime}
     print(context)
     return render(request,'edit.html',context)
 

@@ -7,4 +7,6 @@ class schedule(models.Model):
     interviewerEmail = models.CharField(max_length=100,blank=True)
     intervieweeName = models.CharField(max_length=300,blank=True)
     intervieweeEmail = models.CharField(max_length=300,blank=True)
+    intervieweStartTime = models.CharField(max_length=300,blank=True)
+    intervieweEndTime = models.CharField(max_length=300,blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)

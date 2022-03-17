@@ -16,10 +16,12 @@
                   <label for="" class="form-label">Interviewer Email</label>
                   <input type="email" class="form-control input" id="" aria-describedby="emailHelp" name="interviewerEmail" value="{{interviewerEmail}}" placeholder="interviewer Email">
                 </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Interviewe Start Time</label>
+                  <input type="datetime-local" class="form-control input" id="" aria-describedby="emailHelp" name="intervieweStartTime" value="{{intervieweStartTime}}">
+                </div>
               </div>
               <div class="container col-lg-5 col-11 my-5">
-                {% csrf_token %}
-                
                 <div class="mb-3">
                   <label for="" class="form-label">Interviewee Name</label>
                   <input type="text" class="form-control input" id="" aria-describedby="emailHelp" name="intervieweeName" value="{{intervieweeName}}" placeholder="interviewee Name">
@@ -27,6 +29,10 @@
                 <div class="mb-3">
                   <label for="" class="form-label">Interviewee Email</label>
                   <input type="email" class="form-control input" id="" aria-describedby="emailHelp" name="intervieweeEmail" value="{{intervieweeEmail}}" placeholder="interviewinterviewee Email">
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Interviewe End Time</label>
+                  <input type="datetime-local" class="form-control input" id="" aria-describedby="emailHelp" name="intervieweEndTime" value="{{intervieweEndTime}}">
                 </div>
               </div>
               <div class="col-4 mx-auto text-center">
