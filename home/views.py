@@ -13,11 +13,18 @@ def home(request):
         intervieweeEmail = request.POST['intervieweeEmail']
         intervieweStartTime = request.POST['intervieweStartTime']
         intervieweEndTime = request.POST['intervieweEndTime']
-        
-        print(interviewerName,interviewerEmail,intervieweeName,intervieweeEmail,intervieweStartTime,intervieweEndTime)
-        entry = schedule(interviewerName=interviewerName,interviewerEmail=interviewerEmail,intervieweeName=intervieweeName,intervieweeEmail=intervieweeEmail,user=request.user,intervieweStartTime=intervieweStartTime,intervieweEndTime=intervieweEndTime)
-        entry.save()
-        print("true")
+        some_var = request.POST.getlist('inlineCheckbox')
+        allinterviewers = ""
+        if len(some_var)>=1:
+            for i in some_var:
+                allinterviewers = allinterviewers + i + " , "
+            print(interviewerName,interviewerEmail,intervieweeName,intervieweeEmail,intervieweStartTime,intervieweEndTime,some_var)
+            entry = schedule(interviewerName=interviewerName,interviewerEmail=interviewerEmail,intervieweeName=intervieweeName,intervieweeEmail=intervieweeEmail,user=request.user,intervieweStartTime=intervieweStartTime,intervieweEndTime=intervieweEndTime,allinterviewers=allinterviewers)
+            entry.save()
+            messages.success(request, 'Interview scheduled successfully')
+        else:
+            messages.error(request, 'At Least one interviewer required!!')
+            return redirect('/')
     return render(request,'index.html')
 
 def task(request):
@@ -72,7 +79,7 @@ def deletetask(request,slug):
         print(x)
         try:
             x.delete()
-            # messages.success(request,'task is successfully deleted!')
+            messages.success(request,'Deleted successfully!')
             return redirect('/task/')
         except:
             messages.error(request,'Some error occured!!')
@@ -90,16 +97,25 @@ def edittask(request,slug):
         intervieweeEmail = request.POST['intervieweeEmail']
         intervieweStartTime = request.POST['intervieweStartTime']
         intervieweEndTime = request.POST['intervieweEndTime']
+        some_var = request.POST.getlist('inlineCheckbox')
+        allinterviewers = ""
+        if len(some_var)>=1:
+            for i in some_var:
+                allinterviewers = allinterviewers + i + " , "
         
-        print(interviewerName,interviewerEmail,intervieweeName,intervieweeEmail)
-        task.interviewerName = interviewerName
-        task.interviewerEmail = interviewerEmail
-        task.intervieweeName = intervieweeName
-        task.intervieweeEmail = intervieweeEmail
-        task.intervieweStartTime = intervieweStartTime
-        task.intervieweEndTime = intervieweEndTime
-        task.save()
-        return redirect('/task/') 
+            task.interviewerName = interviewerName
+            task.interviewerEmail = interviewerEmail
+            task.intervieweeName = intervieweeName
+            task.intervieweeEmail = intervieweeEmail
+            task.intervieweStartTime = intervieweStartTime
+            task.intervieweEndTime = intervieweEndTime
+            task.allinterviewers = allinterviewers
+            task.save()
+            messages.success(request, 'Interview Updated successfully')
+            return redirect('/task/') 
+        else:
+            messages.error(request, 'At Least one interviewer required!!')
+            return redirect('/edittask/' + slug)
     context = {"interviewerName":task.interviewerName,"interviewerEmail":task.interviewerEmail,"intervieweeName":task.intervieweeName,"intervieweeEmail":task.intervieweeEmail,"intervieweStartTime":task.intervieweStartTime,"intervieweEndTime":task.intervieweEndTime}
     print(context)
     return render(request,'edit.html',context)

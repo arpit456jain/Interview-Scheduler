@@ -14,8 +14,7 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Interviewer Name</th>
-                <th scope="col">Interviewer Email</th>
+                <th scope="col">Interviewers</th>
                 <th scope="col">Interviewee Name</th>
                 <th scope="col">Interviewee Email</th>
                 <th scope="col">intervieweStartTime</th>
@@ -28,8 +27,7 @@
                 {% for task in allschedule  %}
               <tr>
                 <th scope="row">{{forloop.counter}}</th>
-                <td>{{task.interviewerName}}</td>
-                <td>{{task.interviewerEmail}}</td>
+                <td>{{task.allinterviewers}}</td>
                 <td>{{task.intervieweeName}}</td>
                 <td>{{task.intervieweeEmail}}</td>
                 <td>{{task.intervieweStartTime}}</td>
