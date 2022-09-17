@@ -1,3 +1,4 @@
+from tkinter.tix import Tree
 from django.shortcuts import render,redirect
 from home.models import schedule
 from django.shortcuts import HttpResponse
@@ -5,6 +6,24 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate , login , logout
 from django.contrib import messages
 # Create your views here.
+def checktime(start,end):
+    print(start,end)
+    startdate = start[0:10]
+    enddate = end[0:10]
+    if (startdate != enddate):
+        return []
+    starttime = start[11:]
+    endtime = end[11:]
+    starthour = starttime[0:2]
+    endhour = endtime[0:2]
+
+    startmin = int(starttime[3:])
+    endmin = int(endtime[3:])
+    print(starthour, endhour)
+    print(startmin, endmin)
+    if(starthour > endhour or startmin >= endmin):
+        return []
+    return [startdate , starttime , endtime] # date , starttime , endtime
 def home(request):
     if request.method == 'POST':
         interviewerName = request.POST['interviewerName']
@@ -15,11 +34,20 @@ def home(request):
         intervieweEndTime = request.POST['intervieweEndTime']
         some_var = request.POST.getlist('inlineCheckbox')
         allinterviewers = ""
+        date_and_time = checktime(intervieweStartTime,intervieweEndTime)
+        if(len(date_and_time))>0 :
+            pass
+        else:
+            messages.error(request, 'Incorrect date or time entered!!')
+            return redirect('/')
+        date = date_and_time[0];
+        starttime = date_and_time[1];
+        endtime = date_and_time[2];
         if len(some_var)>=1:
             for i in some_var:
                 allinterviewers = allinterviewers + i + " , "
-            print(interviewerName,interviewerEmail,intervieweeName,intervieweeEmail,intervieweStartTime,intervieweEndTime,some_var)
-            entry = schedule(interviewerName=interviewerName,interviewerEmail=interviewerEmail,intervieweeName=intervieweeName,intervieweeEmail=intervieweeEmail,user=request.user,intervieweStartTime=intervieweStartTime,intervieweEndTime=intervieweEndTime,allinterviewers=allinterviewers)
+            # print(interviewerName,interviewerEmail,intervieweeName,intervieweeEmail,intervieweStartTime,intervieweEndTime,some_var)
+            entry = schedule(interviewerName=interviewerName,interviewerEmail=interviewerEmail,intervieweeName=intervieweeName,intervieweeEmail=intervieweeEmail,user=request.user,intervieweStartTime=starttime,intervieweEndTime=endtime,allinterviewers=allinterviewers,interviewDate=date)
             entry.save()
             messages.success(request, 'Interview scheduled successfully')
         else:

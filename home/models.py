@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class schedule(models.Model):
+    id = models.IntegerField(primary_key=True)
     interviewerName = models.CharField(max_length=100,blank=True)
     interviewerEmail = models.CharField(max_length=100,blank=True)
     intervieweeName = models.CharField(max_length=300,blank=True)
@@ -10,4 +11,5 @@ class schedule(models.Model):
     allinterviewers = models.CharField(max_length=300,blank=True)
     intervieweStartTime = models.CharField(max_length=300,blank=True)
     intervieweEndTime = models.CharField(max_length=300,blank=True)
+    interviewDate = models.CharField(max_length=300,blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)

@@ -17,8 +17,9 @@
                 <th scope="col">Interviewers</th>
                 <th scope="col">Interviewee Name</th>
                 <th scope="col">Interviewee Email</th>
-                <th scope="col">intervieweStartTime</th>
-                <th scope="col">intervieweEndTime</th>
+                <th scope="col">Date</th>
+                <th scope="col">StartTime</th>
+                <th scope="col">EndTime</th>
                 <th scope="col">edit/done</th>
                 
               </tr>
@@ -30,6 +31,7 @@
                 <td>{{task.allinterviewers}}</td>
                 <td>{{task.intervieweeName}}</td>
                 <td>{{task.intervieweeEmail}}</td>
+                <td>{{task.interviewDate}}</td>
                 <td>{{task.intervieweStartTime}}</td>
                 <td>{{task.intervieweEndTime}}</td>
                 <td> <a href="/edittask/{{task.id}}" class="btn btn-success">Edit</a>
