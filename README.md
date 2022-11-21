@@ -85,3 +85,9 @@ pip install -r requirements.txt
 ```
 
 **5.** Go to ` http://127.0.0.1:8000/` and enjoy the application.
+
+Future ideas :
+1. mail about the interview to the both (interviewee and interviwer)
+2. check for multiple interview at same time
+3. mail it to the users we are adding in interview process. for that we can store their email in db and fetch it the mails for those who are selected.
+
