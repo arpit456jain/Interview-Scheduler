@@ -13,53 +13,50 @@
               {% csrf_token %}
               <div class="mb-3">
                 <label for="" class="form-label">Interview Creater Name</label>
-                <input type="text" class="form-control input" id="" aria-describedby="emailHelp" name="interviewerName" placeholder="interviewer Name">
+                <input type="text" class="form-control input" id="" aria-describedby="emailHelp" name="interviewerName" placeholder="interviewer Name" required>
               </div>
               <div class="mb-3">
                 <label for="" class="form-label">Interview Creater Email</label>
-                <input type="email" class="form-control input" id="" aria-describedby="emailHelp" name="interviewerEmail" placeholder="interviewer Email">
+                <input type="email" class="form-control input" id="" aria-describedby="emailHelp" name="interviewerEmail" placeholder="interviewer Email" required>
               </div>
               <div class="mb-3">
                 <label for="" class="form-label">Interviewe Start Time</label>
-                <input type="datetime-local" class="form-control input" id="" aria-describedby="emailHelp" name="intervieweStartTime">
+                <input type="datetime-local" class="form-control input" id="" aria-describedby="emailHelp" name="intervieweStartTime" required>
               </div>
             </div>
             <div class="container col-lg-5 col-11 my-5">             
               <div class="mb-3">
-                <label for="" class="form-label">Interviewee Name</label>
+                <label for="" class="form-label">Interviewee Name (Optional)</label>
                 <input type="text" class="form-control input" id="" aria-describedby="emailHelp" name="intervieweeName" placeholder="interviewee Name">
               </div>
               <div class="mb-3">
-                <label for="" class="form-label">Interviewee Email</label>
+                <label for="" class="form-label">Interviewee Email (Optional)</label>
                 <input type="email" class="form-control input" id="" aria-describedby="emailHelp" name="intervieweeEmail" placeholder="interviewee Email">
               </div>
               <div class="mb-3">
                 <label for="" class="form-label">Interviewe End Time</label>
-                <input type="datetime-local" class="form-control input" id="" aria-describedby="emailHelp" name="intervieweEndTime" >
+                <input type="datetime-local" class="form-control input" id="" aria-describedby="emailHelp" name="intervieweEndTime" required>
               </div>
             </div>
             <div class="col-10 mx-auto">
-              <label for="" class="form-label">Add Interviewers</label> <br>
+              <label for="" class="form-label">Add Participant</label> <br>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="inlineCheckbox" value="Arpit">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="inlineCheckbox" value="arpit">
                 <label class="form-check-label" for="inlineCheckbox1">Arpit</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="inlineCheckbox" value="Ajay">
-                <label class="form-check-label" for="inlineCheckbox2">Ajay</label>
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="inlineCheckbox" value="ajay">
+                <label class="form-check-label" for="inlineCheckbox2">ajay</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="inlineCheckbox" value="Aman">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="inlineCheckbox" value="aman">
                 <label class="form-check-label" for="inlineCheckbox3">Aman</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="inlineCheckbox" value="Astha">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="inlineCheckbox" value="astha">
                 <label class="form-check-label" for="inlineCheckbox3">Astha</label>
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox5" name="inlineCheckbox" value="Ankita">
-                <label class="form-check-label" for="inlineCheckbox3">Ankita</label>
-              </div>
+              
             </div>
            <div class="col-4 mx-auto text-center">
             {% if user.is_authenticated %}
