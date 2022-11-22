@@ -113,6 +113,8 @@ def signup(request):
         print(username, password)
         user = user = User.objects.create_user(username, email, password)
         user.save()
+        messages.success(request, 'Account Created successfully Please Login')
+        return redirect('/login')
     else:
         print("get")
         
@@ -127,6 +129,7 @@ def loginuser(request):
         if user is not None:
             login(request, user)
             # Redirect to a success page.
+            messages.success(request, 'Logged in successfully!!')
             return redirect('/')
         else:
             print("invalid")
