@@ -105,18 +105,18 @@ Live : https://interview-schedular-app.herokuapp.com/task/
 3. Admin can  edit any schedule easily.
 4. Admin can delete any schedule .
 5. Normal user can create their account and login but only admin can schedule the interview.
-6.Email Validation is implemented
-7.Date validation is implemented
-8.Admin can add one optional person as Interviewer also if he wants.
-9.multiple interview at same time validation is also implemented so that no two interviews can be scheduled at same time.
+6. Email Validation is implemented
+7. Date validation is implemented
+8. Admin can add one optional person as Interviewer also if he wants.
+9. multiple interview at same time validation is also implemented so that no two interviews can be scheduled at same time.
 
 
 Future ideas :
 1. Send the mail to optional interviewer also.
 2. send the meeting link also.
 3. we can make a page for users to check their interviews scheduled for them.
-4.some features like forgot password , reset password , otp verification , etc can be implemented.
+4. some features like forgot password , reset password , otp verification , etc can be implemented.
 5. we can make a field for uploading the resume also while signup.
 6. change the resume after logging in.
-7.fetch the users from backend instead of hardcode.
+7. fetch the users from backend instead of hardcode.
 
