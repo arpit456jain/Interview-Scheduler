@@ -23,7 +23,7 @@ def check(email):
 def send_email_to_candidate(email,starttime,name):
     try:
         print(email,starttime,name)
-        email = EmailMessage('Interview',f"Subject: Hello {name} Your interview is scheduled at {starttime}", settings.EMAIL_HOST_USER,[email])
+        email = EmailMessage('Interview',f"Hello {name} Your interview is scheduled at {starttime}", settings.EMAIL_HOST_USER,[email])
         email.send()
         print('no error')
     except Exception as e:
