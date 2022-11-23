@@ -1,9 +1,5 @@
 # Interview-Scheduler
 
-<img src="3.png">
-<img src="2.png">
-<img src="1.png">
-
 ## 🚀 Quick Start :
 
 #### Step 1: Forking the repository :
@@ -86,8 +82,40 @@ pip install -r requirements.txt
 
 **5.** Go to ` http://127.0.0.1:8000/` and enjoy the application.
 
+
+Current Features : 
+1. mail about the interview to all the selected candidate with proper suject and body.
+
+2.All the upcomming interviews can be views on the page /task.
+- we have search feature in the table 
+- we also have pagination in the table so it can hold 100+ schedules easily. 
+<br>
+
+`
+For localhost : http://127.0.0.1:8000/task 
+`
+
+`
+Live : https://interview-schedular-app.herokuapp.com/task/
+`
+<br>
+<img src="alltask.png">
+
+3. Admin can  edit any schedule easily.
+4. Admin can delete any schedule .
+5. Normal user can create their account and login but only admin can schedule the interview.
+6.Email Validation is implemented
+7.Date validation is implemented
+8.Admin can add one optional person as Interviewer also if he wants.
+9.multiple interview at same time validation is also implemented so that no two interviews can be scheduled at same time.
+
+
 Future ideas :
-1. mail about the interview to the both (interviewee and interviwer)
-2. check for multiple interview at same time
-3. mail it to the users we are adding in interview process. for that we can store their email in db and fetch it the mails for those who are selected.
+1. Send the mail to optional interviewer also.
+2. send the meeting link also.
+3. we can make a page for users to check their interviews scheduled for them.
+4.some features like forgot password , reset password , otp verification , etc can be implemented.
+5. we can make a field for uploading the resume also while signup.
+6. change the resume after logging in.
+7.fetch the users from backend instead of hardcode.
 
