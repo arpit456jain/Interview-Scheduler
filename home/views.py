@@ -7,10 +7,9 @@ from django.contrib.auth import authenticate , login , logout
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.conf import settings
-import smtplib
+
 import re
-admin_email = "arpit456jain@gmail.com"
-admin_password = "evnkptcwjohfffdk"
+
 
 
 regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
@@ -29,7 +28,7 @@ def send_email_to_candidate(email,starttime,name):
     except Exception as e:
         print("Error",e)
 
-# send_email_to_candidate("111arpit1@gmail.com","today","aj")
+
 def checktime(start,end):
     print(start,end)
     startdate = start[0:10]
@@ -82,11 +81,11 @@ def home(request):
         allinterviewers = ""
         #checking the time entered is valid or not 
         date_and_time = checktime(intervieweStartTime,intervieweEndTime)
-        # if(len(date_and_time))>0 :
-        #     pass
-        # else:
-        #     messages.error(request, 'Incorrect date or time entered!!')
-        #     return redirect('/')
+        if(len(date_and_time))>0 :
+            pass
+        else:
+            messages.error(request, 'Incorrect date or time entered!!')
+            return redirect('/')
         date = date_and_time[0]
         starttime = date_and_time[1]
         endtime = date_and_time[2]
