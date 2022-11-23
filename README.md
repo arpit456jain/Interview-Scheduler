@@ -1,5 +1,5 @@
 # Interview-Scheduler
-<img src="alltask.png">
+<img src="home.png">
 
 ## 🚀 Quick Start :
 
