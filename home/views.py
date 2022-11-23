@@ -1,4 +1,4 @@
-from tkinter.tix import Tree
+
 from django.shortcuts import render,redirect
 from home.models import schedule,candidates
 from django.shortcuts import HttpResponse
