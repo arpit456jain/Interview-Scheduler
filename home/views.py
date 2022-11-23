@@ -5,7 +5,31 @@ from django.shortcuts import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate , login , logout
 from django.contrib import messages
-# Create your views here.
+from django.core.mail import EmailMessage
+from django.conf import settings
+import smtplib
+import re
+admin_email = "arpit456jain@gmail.com"
+admin_password = "evnkptcwjohfffdk"
+
+
+regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+def check(email):
+    if(re.search(regex,email)):
+        return True
+    else:
+        return False
+
+def send_email_to_candidate(email,starttime,name):
+    try:
+        print(email,starttime,name)
+        email = EmailMessage('Interview',f"Subject: Hello {name} Your interview is scheduled at {starttime}", settings.EMAIL_HOST_USER,[email])
+        email.send()
+        print('no error')
+    except Exception as e:
+        print("Error",e)
+
+# send_email_to_candidate("111arpit1@gmail.com","today","aj")
 def checktime(start,end):
     print(start,end)
     startdate = start[0:10]
@@ -46,8 +70,6 @@ def is_available(cur_user,cur_date,starttime,endtime):
             return False
     return True
         
-
-
 def home(request):
     if request.method == 'POST':
         interviewerName = request.POST['interviewerName']
@@ -60,11 +82,11 @@ def home(request):
         allinterviewers = ""
         #checking the time entered is valid or not 
         date_and_time = checktime(intervieweStartTime,intervieweEndTime)
-        if(len(date_and_time))>0 :
-            pass
-        else:
-            messages.error(request, 'Incorrect date or time entered!!')
-            return redirect('/')
+        # if(len(date_and_time))>0 :
+        #     pass
+        # else:
+        #     messages.error(request, 'Incorrect date or time entered!!')
+        #     return redirect('/')
         date = date_and_time[0]
         starttime = date_and_time[1]
         endtime = date_and_time[2]
@@ -80,13 +102,18 @@ def home(request):
             entry = schedule(interviewerName=interviewerName,interviewerEmail=interviewerEmail,intervieweeName=intervieweeName,intervieweeEmail=intervieweeEmail,user=request.user,intervieweStartTime=intervieweStartTime,intervieweEndTime=intervieweEndTime,allinterviewers=allinterviewers,interviewDate=date)
             entry.save()
             
+            # and update this interview in candidates table also and send mail to them
             for i in some_var:
                 can_user = User.objects.get(username=i)
                 can_entry = candidates(candidate_name=can_user,interview_id=entry)
                 can_entry.save()
+                if(check(can_user.email)==True):
+                    #send email to candidate
+                    send_email_to_candidate(can_user.email,intervieweStartTime,can_user.username)
+                else:
+                    messages.error(request, f'{i} has invalid email !!')
+                    return redirect('/')
 
-            # and update this interview in candidates table also
-            
             messages.success(request, 'Interview scheduled successfully')
         else:
             messages.error(request, 'At Least one candidate is required!!')
@@ -103,7 +130,6 @@ def task(request):
         print(allschedule)
         return render(request,'task.html',context)
     return render(request,'task.html')
-
 
 def signup(request):
     if request.method == 'POST':
@@ -142,7 +168,6 @@ def logoutuser(request):
 def del_candidates_by_schedule_id(del_schedule):
     candidates.objects.filter(interview_id=del_schedule).delete()
     
-
 def deletetask(request,slug):
     if request.method=="GET":
         # x = Task.objects.filter(id=id).delete()
