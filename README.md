@@ -120,3 +120,26 @@ Future ideas :
 6. change the resume after logging in.
 7. fetch the users from backend instead of hardcode.
 
+
+Database Schemas : 
+
+it contains 3 tables
+
+1. Users
+- name 
+- username'
+- email
+- password
+
+2. Schedule
+- id
+- allcandidates
+- intervieweStartTime
+- intervieweEndTime
+- interviewDate
+- user(ForeignKey)
+
+3. Candidates
+- id
+- name(ForeignKey of User)
+- schedule_id(ForeignKey of schedule)
